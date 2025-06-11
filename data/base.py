@@ -51,7 +51,7 @@ mrk = """
 color: white; 
 margin-bottom: 50px;
 padding: 10px;
-max-width: 300px;
+max-width: 100%;
 text-align: center;
 border-radius: 5px; text-align: center;">
     {}
@@ -65,17 +65,17 @@ about_diabets = """
 **Diabetes** is a chronic health condition that affects how your body turns food into energy. It is characterized by high levels of glucose (sugar) in the blood, which occurs because the body either doesn’t produce enough insulin, doesn’t use insulin effectively, or both.
 
 ### **Types of Diabetes**:
-1. **Type 1 Diabetes**:
+ **Type 1 Diabetes**:
    - An autoimmune condition where the immune system attacks and destroys insulin-producing cells in the pancreas.
    - Typically diagnosed in children and young adults.
    - Requires daily insulin injections to manage blood sugar.
 
-2. **Type 2 Diabetes**:
+ **Type 2 Diabetes**:
    - The body becomes resistant to insulin, or the pancreas doesn’t produce enough insulin.
    - Often linked to lifestyle factors like obesity, physical inactivity, and poor diet, but genetics also play a role.
    - Managed through lifestyle changes, medications, and sometimes insulin.
 
-3. **Gestational Diabetes**:
+ **Gestational Diabetes**:
    - Occurs during pregnancy when the body cannot make enough insulin to support the increased demand.
    - Usually resolves after childbirth, but it increases the risk of developing type 2 diabetes later in life.
 

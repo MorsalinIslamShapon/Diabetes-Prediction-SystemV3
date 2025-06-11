@@ -23,10 +23,10 @@ def app():
 
      # BloodPressure
     bloodpressure_value = st.sidebar.number_input(
-        'Enter value for `Blood Pressure`',
+        'Enter value for `Diastolic Blood Pressure`',
         min_value=0,
         max_value=200,
-        value=1
+        value=60
     )
     # SkinThickness
     skinthickness_value = st.sidebar.number_input(
@@ -49,7 +49,7 @@ def app():
         'Enter value for `BMI`',
         min_value=0.0,
         max_value=100.0,
-        value=37.0,
+        value=18.5,
         format="%.1f"
     )
     # DiabetesPedigreeFunction
