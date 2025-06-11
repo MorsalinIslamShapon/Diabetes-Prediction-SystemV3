@@ -7,7 +7,7 @@ This project demonstrates a machine learning solution for predicting diabetes ba
 
 ## Live Demo
 
-Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-uz.streamlit.app/)
+Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-systemv2-09.streamlit.app/)
 
 ---
 
