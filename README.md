@@ -49,7 +49,7 @@ The dataset is sourced from the **National Institute of Diabetes and Digestive a
 The dataset contains the following details:
 
 ### General Overview
-- **Number of rows:** 768
+- **Number of rows:** 3001
 - **Number of columns:** 9
 - **Column names and data types:**
   - `Pregnancies` (int64): Number of times pregnant.
