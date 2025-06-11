@@ -1,13 +1,13 @@
 # Diabetes Prediction with AI
 
-
+![](https://github.com/Shankhadweep/Diabetes-Prediction-SystemV2/blob/main/Recording%202025-06-11%20102946.gif)
 
 
 This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like SHAP and permutation importance to explain model predictions.
 
 ## Live Demo
 
-Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-uz.streamlit.app/)
+Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-systemv2-09.streamlit.app/)
 
 ---
 
@@ -24,7 +24,7 @@ Check out the live application: [Diabetes Prediction App](https://diabetes-predi
 10. [Project Motivation](#project-motivation)
 11. [Contributing](#contributing)
 12. [License](#license)
-13. [Contacts](#contacts)
+
 
 ---
 
@@ -49,7 +49,7 @@ The dataset is sourced from the **National Institute of Diabetes and Digestive a
 The dataset contains the following details:
 
 ### General Overview
-- **Number of rows:** 768
+- **Number of rows:** 3001
 - **Number of columns:** 9
 - **Column names and data types:**
   - `Pregnancies` (int64): Number of times pregnant.
