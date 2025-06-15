@@ -12,7 +12,7 @@ from sklearn.metrics import (accuracy_score,
                              roc_auc_score)
 
 data = pd.read_csv('datasets/diabetes.csv')
-X = data[['Pregnancies', 'Glucose', 'Insulin', 'BMI', 'Age']]
+X = data[['Pregnancies', 'Glucose','BloodPressure','SkinThickness', 'Insulin', 'BMI','DiabetesPedigreeFunction', 'Age']]
 y = data['Outcome']
 
 page_icon = Image.open("image/page_icon.jpeg")

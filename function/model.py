@@ -1,18 +1,15 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
-from function.transformers import FeatureEngineering, WoEEncoding, ColumnSelector
+from function.transformers import ColumnSelector
 
 
 selected_columns = [
-    'Pregnancies', 'Glucose', 'BMI', 'PregnancyRatio',
-    'RiskScore', 'InsulinEfficiency', 'Glucose_BMI', 'BMI_Age',
-    'Glucose_woe', 'RiskScore_woe'
+    'Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
+    'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age'
 ]
 
 # Pipeline setup
 Model = Pipeline([
-    ('feature_engineering', FeatureEngineering()),
-    ('woe_encoding', WoEEncoding()),
     ('column_selector', ColumnSelector(selected_columns)),
     ('model', RandomForestClassifier(max_depth=6,
                                      n_estimators=300,

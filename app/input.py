@@ -70,5 +70,16 @@ def app():
     )
 
     st.sidebar.markdown('---')
-    return pd.DataFrame([[pregnancies_value, glucose_value,bloodpressure_value,skinthickness_value,insulin_value,bmi_value,diabetespedigreefunction_value, age_value]], 
-                        columns=['Pregnancies', 'Glucose','Blood Pressure','Skin Thickness','Insulin','BMI','Diabetes Pedigree Function','Age'])    
+    # At the end of the app() function, modify the input_data creation:
+    input_data = pd.DataFrame({
+        'Pregnancies': [pregnancies_value],
+        'Glucose': [glucose_value],
+        'BloodPressure': [bloodpressure_value],
+        'SkinThickness': [skinthickness_value],
+        'Insulin': [insulin_value],
+        'BMI': [bmi_value],
+        'DiabetesPedigreeFunction': [diabetespedigreefunction_value],
+        'Age': [age_value]
+    })
+
+    return input_data

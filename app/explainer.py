@@ -22,9 +22,9 @@ def create_gauge_chart(value, title, min_val, max_val, normal_range):
 
     return fig
 def app(input_data):
-    sample_transformed = model.named_steps['feature_engineering'].transform(input_data)
+    # Remove the feature engineering transformation since it's no longer in the pipeline
     explainer = shap.TreeExplainer(model.named_steps['model'])
-    shap_values_single = explainer.shap_values(sample_transformed)
+    shap_values_single = explainer.shap_values(input_data)
 
     shap_values_class_1 = shap_values_single[0][:, 1]  
     st.subheader("Key Metrics")
@@ -37,11 +37,11 @@ def app(input_data):
 Your inputs:\n
 `Pregnancies`: {int(input_data.iloc[0]['Pregnancies'])}\n
 `Glucose`: {float(input_data.iloc[0]['Glucose'])}\n
-`Blood\tPressure`: {float(input_data.iloc[0]['Blood Pressure'])}\n
-`Skin\tThickness`: {float(input_data.iloc[0]['Skin Thickness'])}\n
+`BloodPressure`: {float(input_data.iloc[0]['BloodPressure'])}\n
+`SkinThickness`: {float(input_data.iloc[0]['SkinThickness'])}\n
 `Insulin`: {float(input_data.iloc[0]['Insulin'])}\n
 `BMI`: {float(input_data.iloc[0]['BMI'])}\n
-`Diabetes\tPedigree\tFunction`: {float(input_data.iloc[0]['Diabetes Pedigree Function'])}\n
+`DiabetesPedigreeFunction`: {float(input_data.iloc[0]['DiabetesPedigreeFunction'])}\n
 `Age`: {float(input_data.iloc[0]['Age'])}
                 """
         for word in text.split(" "):
@@ -67,12 +67,13 @@ Your inputs:\n
         fig2 = create_gauge_chart(float(input_data.iloc[0]['Glucose']), "Glucose", 0, 200, [70, 140])
         st.plotly_chart(fig2, use_container_width=True)
     
+    # Update the gauge chart calls to use correct column names
     with row1_cols[2]:
-        fig3 = create_gauge_chart(float(input_data.iloc[0]['Blood Pressure']), "Blood Pressure", 0, 122, [60, 80])
+        fig3 = create_gauge_chart(float(input_data.iloc[0]['BloodPressure']), "Blood Pressure", 0, 122, [60, 80])
         st.plotly_chart(fig3, use_container_width=True)
     
     with row1_cols[3]:
-        fig4 = create_gauge_chart(float(input_data.iloc[0]['Skin Thickness']), "Skin Thickness", 0, 100, [10, 50])
+        fig4 = create_gauge_chart(float(input_data.iloc[0]['SkinThickness']), "Skin Thickness", 0, 100, [10, 50])
         st.plotly_chart(fig4, use_container_width=True)
     
     # Second row of metrics
@@ -85,7 +86,7 @@ Your inputs:\n
         st.plotly_chart(fig6, use_container_width=True)
     
     with row2_cols[2]:
-        fig7 = create_gauge_chart(float(input_data.iloc[0]['Diabetes Pedigree Function']), "DPF", 0, 2.5, [0.078, 2.42])
+        fig7 = create_gauge_chart(float(input_data.iloc[0]['DiabetesPedigreeFunction']), "DPF", 0, 2.5, [0.078, 2.42])
         st.plotly_chart(fig7, use_container_width=True)
     
     with row2_cols[3]:
@@ -96,11 +97,12 @@ Your inputs:\n
    
 
     # SHAP Force Plot
+    # Update the force plot to use the input data directly
     force_plot_html = shap.force_plot(
         base_value=explainer.expected_value[1],
         shap_values=shap_values_single[0][:, 1],
-        features=sample_transformed.iloc[0],
-        feature_names=sample_transformed.columns.tolist()
+        features=input_data.iloc[0],
+        feature_names=input_data.columns.tolist()
     )
 
     # Explanation column
