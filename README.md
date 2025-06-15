@@ -7,7 +7,7 @@ This project demonstrates a machine learning solution for predicting diabetes ba
 
 ## Live Demo
 
-Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-systemv2-09.streamlit.app/)
+Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-systemv3-09.streamlit.app/)
 
 ---
 
@@ -87,26 +87,10 @@ The dataset contains the following details:
 ---
 
 ## Model
-You can learn more about the model in detail from [here](notebooks/Model.ipynb). The `RandomForestClassifier` model was chosen through experimentation and showed the best performance. The required hyperparameters were identified using the `optuna` optimizer. For the model to function, it needs `FeatureEngineering`, `WoEEncoding`, and `ColumnSelector` transformers, which are combined through a pipeline.
-`Cross-validation` and `ROC AUC` were used for model selection because the number of observations was small, and splitting into test/train sets would have been inaccurate.
+You can learn more about the model in detail from [here](notebooks/Model.ipynb). The `RandomForestClassifier` model was chosen through experimentation and showed the best performance. pipeline.
+ `ROC AUC` were used for model selection because the number of observations was small, and splitting into test/train sets would have been inaccurate.
 
 ### About tarnsformers
-#### **1. FeatureEngineering**
-Transforms raw data into a format suitable for machine learning. This includes scaling, encoding, creating new features, or handling missing data.
-
-
-#### **2. WoEEncoding (Weight of Evidence Encoding)**
-Features must help to better explain the `Outcome` after WoE.
-The Weight of Evidence (WoE) for a category in a feature is calculated as:
-
-Where:
-- `P(Feature = X | Target = 1)`: Proportion of positive cases (`Target = 1`) for the category `X`.
-- `P(Feature = X | Target = 0)`: Proportion of negative cases (`Target = 0`) for the category `X`.
-
-##### Example:
-If a feature `X` has the following counts:
-- For `Target = 1` (Positive): `N1`
-- For `Target = 0` (Negative): `N0`
 
 #### **3. ColumnSelector**
 Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
@@ -116,7 +100,7 @@ Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
 ---
 ## Features
 
-1. **Interactive Input**: Enter health parameters (Pregnancies, Glucose, Insulin, BMI, Age).
+1. **Interactive Input**: Enter health parameters (Pregnancies,Glucose,Blood Pressure,Skin Thickness,Insulin,BMI,Diabetes Pedigree Function,Age).
 2. **Diabetes Prediction**: Real-time risk prediction with probability.
 3. **SHAP Explanations**: Visualize individual prediction explanations using:
    - Waterfall Plot
@@ -141,7 +125,7 @@ Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/UznetDev/Diabetes-Prediction.git
+   git clone https://github.com/Shankhadweep/Diabetes-Prediction-SystemV3.git
    cd Diabetes-Prediction
    ```
 
@@ -162,7 +146,7 @@ Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
 ### Application Workflow
 1. **User Input**:
    - Enter health data in the sidebar.
-   - Features: Pregnancies, Glucose, Insulin, BMI, Age.
+   - Features: Pregnancies,Glucose,Blood Pressure,Skin Thickness,Insulin,BMI,Diabetes Pedigree Function,Age.
 2. **Prediction**:
    - The trained model predicts diabetes risk and displays the result.
 3. **Explanation**:
@@ -219,11 +203,11 @@ Diabetes-Prediction/
 ## Model Performance
 
 Performance metrics calculated:
-- **Accuracy**: Percentage of correct predictions. (0.7857)
-- **Precision**: Ratio of true positives to total positive predictions. (0.6296)
-- **Recall**: Ratio of true positives to total actual positives. (0.9444)
-- **F1 Score**: Harmonic mean of Precision and Recall. (0.7556)
-- **ROC AUC**: Area under the ROC curve. (0.8367)
+- **Accuracy**: Percentage of correct predictions. (0.998)
+- **Precision**: Ratio of true positives to total positive predictions. (0.9943)
+- **Recall**: Ratio of true positives to total actual positives. (1.0000)
+- **F1 Score**: Harmonic mean of Precision and Recall. (0.9971)
+- **ROC AUC**: Area under the ROC curve. (1.0000)
 
 Metrics are displayed as donut charts in the application.
 
