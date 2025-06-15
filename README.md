@@ -1,6 +1,6 @@
 # Diabetes Prediction with AI
 
-![](https://github.com/Shankhadweep/Diabetes-Prediction-SystemV2/blob/main/Recording%202025-06-11%20102946.gif)
+![]([https://github.com/Shankhadweep/Diabetes-Prediction-SystemV2/blob/main/Recording%202025-06-11%20102946.gif](https://github.com/Shankhadweep/Diabetes-Prediction-SystemV3/blob/main/Recording%202025-06-16%20015557.gif)https://github.com/Shankhadweep/Diabetes-Prediction-SystemV3/blob/main/Recording%202025-06-16%20015557.gif)
 
 
 This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like SHAP and permutation importance to explain model predictions.
