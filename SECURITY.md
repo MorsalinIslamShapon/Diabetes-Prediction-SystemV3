@@ -13,12 +13,12 @@ Please trust only specialists and take care of your health.*
 
 ## Model accurace
 
-`F1 Score:` *0.7556*
+`F1 Score:` *0.9971*
 
-`Accuracy Score:` *0.7857*
+`Accuracy Score:` *0.998*
 
-`Recall Score:` *0.9444*
+`Recall Score:` *1.0000*
 
-`Precision Score:` *0.6296*
+`Precision Score:` *0.9943*
 
-`ROC AUC Score:` *0.8367*
+`ROC AUC Score:` *1.0000*
