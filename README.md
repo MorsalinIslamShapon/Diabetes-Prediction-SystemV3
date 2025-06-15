@@ -83,7 +83,7 @@ The dataset contains the following details:
 - **Outcome:** Proportion of `1` (positive diabetes) = 34.9%
 
 
-#### We use only `Pregnancies`, `Glucose`, `BMI`, `Insulin`, `Age` for prediction.
+#### We use only `all` of this parameters for prediction.
 ---
 
 ## Model
