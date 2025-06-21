@@ -1,248 +1,133 @@
-# Diabetes Prediction with AI
+# Diabetes Prediction System V3 🍏
 
-![](https://github.com/Shankhadweep/Diabetes-Prediction-SystemV3/blob/main/Recording%202025-06-16%20015557.gif)
+![Diabetes Prediction](https://img.shields.io/badge/Diabetes%20Prediction%20System-V3-brightgreen)
 
-
-This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like SHAP and permutation importance to explain model predictions.
-
-## Live Demo
-
-Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-systemv3-09.streamlit.app/)
-
----
+Welcome to the **Diabetes Prediction System V3** repository! This project showcases a machine learning solution designed to predict diabetes based on user-provided health data. It utilizes advanced technologies to provide accurate predictions and insightful explanations for each model decision.
 
 ## Table of Contents
-1. [Overview](#overview)
-2. [Dataset](#dataset)
-3. [Model](#model)
-4. [Features](#features)
-5. [Installation](#installation)
-6. [How It Works](#how-it-works)
-7. [Project Structure](#project-structure)
-8. [Explanation Methods](#explanation-methods)
-9. [Model Performance](#model-performance)
-10. [Project Motivation](#project-motivation)
-11. [Contributing](#contributing)
-12. [License](#license)
 
+- [Project Overview](#project-overview)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [How It Works](#how-it-works)
+- [Model Interpretability](#model-interpretability)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
----
+## Project Overview
 
-## Overview
+Diabetes is a significant health concern worldwide. Early detection and prediction can lead to better management and treatment. This project employs machine learning techniques to analyze health data and predict the likelihood of diabetes. The application is built using Streamlit, providing an interactive web interface for users to input their health metrics and receive predictions.
 
-The **Diabetes Prediction with AI** project leverages a machine learning model to predict diabetes risk. Built with **Streamlit**, the app explains predictions using SHAP and permutation importance while showcasing model performance metrics. This model has not been reviewed by medical professionals; it is developed solely for experimental and testing purposes.
-The model was developed based on the ROC AUC metric, while efforts were made to improve the Recall metric when selecting the threshold, as this decision was made due to the medical context.
+## Technologies Used
 
-### Why This Project?
+This project utilizes several powerful libraries and frameworks:
 
-Understanding diabetes risk through data-driven predictions can help identify potential cases early. This project also demonstrates:
-- Practical application of machine learning.
-- Model interpretability through SHAP and permutation importance.
-- Real-world deployment of machine learning models.
+- **Jupyter Notebook**: For developing and testing machine learning models.
+- **Machine Learning Libraries**: 
+  - **Scikit-learn**: For implementing machine learning algorithms.
+  - **Random Forest Classifier**: A robust model for classification tasks.
+- **Data Manipulation and Analysis**:
+  - **Pandas**: For data handling and manipulation.
+  - **NumPy**: For numerical operations.
+- **Data Visualization**:
+  - **Matplotlib**: For basic plotting.
+  - **Seaborn**: For advanced visualizations.
+  - **Plotly**: For interactive plots.
+- **Web Framework**:
+  - **Streamlit**: For creating the web application interface.
 
----
-
-## Dataset
-
-The dataset is sourced from the **National Institute of Diabetes and Digestive and Kidney Diseases**. It includes:
-
-The dataset contains the following details:
-
-### General Overview
-- **Number of rows:** 3001
-- **Number of columns:** 9
-- **Column names and data types:**
-  - `Pregnancies` (int64): Number of times pregnant.
-  - `Glucose` (int64):  Plasma glucose concentration a 2 hours in an oral glucose tolerance test.
-  - `BloodPressure` (int64): Diastolic blood pressure (mm Hg).
-  - `SkinThickness` (int64): Triceps skin fold thickness (mm).
-  - `Insulin` (int64): 2-Hour serum insulin (mu U/ml).
-  - `BMI` (float64): Body mass index (weight in kg/(height in m)^2).
-  - `DiabetesPedigreeFunction` (float64): Diabetes pedigree function.
-  - `Age` (int64): Age (years).
-  - `Outcome` (int64): Class variable (0 or 1).
-
-### Sample Data (First 5 Rows)
-| Pregnancies | Glucose | BloodPressure | SkinThickness | Insulin |  BMI  | DiabetesPedigreeFunction | Age | Outcome |
-|-------------|---------|---------------|---------------|---------|-------|---------------------------|-----|---------|
-| 6           | 148     | 72            | 35            | 0       | 33.6  | 0.627                     | 50  | 1       |
-| 1           | 85      | 66            | 29            | 0       | 26.6  | 0.351                     | 31  | 0       |
-| 8           | 183     | 64            | 0             | 0       | 23.3  | 0.672                     | 32  | 1       |
-| 1           | 89      | 66            | 23            | 94      | 28.1  | 0.167                     | 21  | 0       |
-| 0           | 137     | 40            | 35            | 168     | 43.1  | 2.288                     | 33  | 1       |
-
-### Statistical Summary
-- **Pregnancies:** Mean = 3.85, Max = 17
-- **Glucose:** Mean = 120.89, Min = 0 (possible missing values)
-- **BloodPressure:** Mean = 69.11, Min = 0 (possible missing values)
-- **SkinThickness:** Mean = 20.54, Min = 0 (possible missing values)
-- **Insulin:** Mean = 79.80, Min = 0 (possible missing values)
-- **BMI:** Mean = 31.99, Min = 0 (possible missing values)
-- **DiabetesPedigreeFunction:** Mean = 0.47, Max = 2.42
-- **Age:** Mean = 33.24, Max = 81
-- **Outcome:** Proportion of `1` (positive diabetes) = 34.9%
-
-
-#### We use only `all` of this parameters for prediction.
----
-
-## Model
-You can learn more about the model in detail from [here](notebooks/Model.ipynb). The `RandomForestClassifier` model was chosen through experimentation and showed the best performance. pipeline.
- `ROC AUC` were used for model selection because the number of observations was small, and splitting into test/train sets would have been inaccurate.
-
-### About tarnsformers
-
-#### **3. ColumnSelector**
-Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
-    *RiskScore*, *InsulinEfficiency*, *Glucose_BMI*, *BMI_Age*,
-    *Glucose_woe*, *RiskScore_woe* after `FeatureEngineering`, it helps remove noice columns.
-
----
 ## Features
 
-1. **Interactive Input**: Enter health parameters (Pregnancies,Glucose,Blood Pressure,Skin Thickness,Insulin,BMI,Diabetes Pedigree Function,Age).
-2. **Diabetes Prediction**: Real-time risk prediction with probability.
-3. **SHAP Explanations**: Visualize individual prediction explanations using:
-   - Waterfall Plot
-   - Force Plot
-4. **Permutation Importance**: Analyze which features most influence the predictions.
-5. **Performance Metrics**:
-   - Accuracy
-   - Precision
-   - Recall
-   - F1 Score
-   - ROC AUC
-6. **Informational Section**: Learn about diabetes risk factors in the "About" section.
-
----
+- **User-Friendly Interface**: Input health data easily through a clean and intuitive interface.
+- **Real-Time Predictions**: Get immediate predictions based on the input data.
+- **Model Interpretability**: Understand how the model arrives at predictions using SHAP and permutation importance.
+- **Data Visualization**: Visualize data trends and model performance with interactive plots.
 
 ## Installation
 
-### Prerequisites
-- Python 3.10 or above
-- Pip package manager
+To set up the Diabetes Prediction System on your local machine, follow these steps:
 
-### Steps
-1. Clone the repository:
+1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Shankhadweep/Diabetes-Prediction-SystemV3.git
-   cd Diabetes-Prediction
+   git clone https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3.git
    ```
 
-2. Install required dependencies:
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Diabetes-Prediction-SystemV3
+   ```
+
+3. **Install Required Packages**:
+   Ensure you have Python installed. Then, run:
    ```bash
    pip install -r requirements.txt
    ```
 
-3. Run the application locally:
+4. **Run the Application**:
+   Launch the Streamlit app with:
    ```bash
-   streamlit run main.py
+   streamlit run app.py
    ```
 
----
+## Usage
+
+Once the application is running, navigate to `http://localhost:8501` in your web browser. You will see the interface where you can input your health data. Fill in the required fields and click the "Predict" button to receive your diabetes prediction.
 
 ## How It Works
 
-### Application Workflow
-1. **User Input**:
-   - Enter health data in the sidebar.
-   - Features: Pregnancies,Glucose,Blood Pressure,Skin Thickness,Insulin,BMI,Diabetes Pedigree Function,Age.
-2. **Prediction**:
-   - The trained model predicts diabetes risk and displays the result.
-3. **Explanation**:
-   - View SHAP plots (Waterfall and Force) for detailed feature contributions.
-   - Explore permutation importance for global feature analysis.
-4. **Model Performance**:
-   - Metrics such as Accuracy, F1 Score, and ROC AUC are displayed.
+The system leverages a Random Forest Classifier trained on a dataset containing various health metrics. When a user inputs their data, the model processes this information and provides a prediction on the likelihood of diabetes. 
 
+The model is trained using a diverse dataset to ensure accuracy and reliability. The training process involves splitting the dataset into training and testing sets, followed by model evaluation using various metrics.
 
-# Project Structure
-```
-Diabetes-Prediction/
-├── README.md                 # Project documentation
-├── main.py                   # Entry point for the Streamlit app
-├── loader.py                 # Data loading and preprocessing
-├── training.py               # Script for training the model
-├── requirements.txt          # Project dependencies
-├── LICENSE                   # License file
-├── datasets/
-│   ├── diabetes.csv          # Dataset used for training and predictions
-├── models/
-│   ├── model.pkl             # Trained machine learning model
-├── images/
-│   ├── page_icon.jpeg        # Application page icon
-├── data/
-│   ├── config.py             # Configuration variables
-│   ├── base.py               # Static HTML/CSS content
-├── functions/
-│   ├── model.py              # Custom model implementation
-│   ├── function.py           # Utility functions
-└── app/                      # Application logic and components
-    ├── predict.py            # Prediction logic
-    ├── explainer.py          # SHAP-based explanations
-    ├── perm_importance.py    # Permutation importance analysis
-    ├── performance.py        # Visualization of model performance metrics
-    ├── input.py              # User input handling for predictions
-    ├── about.py              # Informational section on diabetes
-```
+## Model Interpretability
 
+Understanding how a model makes predictions is crucial for trust and transparency. This project employs two key interpretability tools:
 
----
+1. **SHAP (SHapley Additive exPlanations)**: This method explains the output of any machine learning model. It assigns each feature an importance value for a particular prediction, helping users understand which factors influence their diabetes risk.
 
-## Explanation Methods
-
-1. **SHAP Waterfall Plot**:
-   - Shows how each feature contributes positively or negatively to the prediction.
-2. **SHAP Force Plot**:
-   - Interactive visualization of feature contributions to individual predictions.
-3. **Permutation Importance**:
-   - Ranks features by their impact on the model's predictions.
-
----
-
-## Model Performance
-
-Performance metrics calculated:
-- **Accuracy**: Percentage of correct predictions. (0.998)
-- **Precision**: Ratio of true positives to total positive predictions. (0.9943)
-- **Recall**: Ratio of true positives to total actual positives. (1.0000)
-- **F1 Score**: Harmonic mean of Precision and Recall. (0.9971)
-- **ROC AUC**: Area under the ROC curve. (1.0000)
-
-Metrics are displayed as donut charts in the application.
-
----
-
-## Project Motivation
-
-This project was developed to:
-- Build knowledge in machine learning, especially in healthcare.
-- Gain hands-on experience with model interpretability techniques like SHAP.
-- Deploy an AI solution using **Streamlit**.
-
----
+2. **Permutation Importance**: This technique measures the impact of each feature on the model's accuracy. By shuffling the values of a feature and observing the change in model performance, users can gauge the importance of that feature.
 
 ## Contributing
 
-Contributions are welcome! Follow these steps:
-1. Fork the repository.
-2. Create a new feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push:
-   ```bash
-   git commit -m "Feature description"
-   git push origin feature-name
-   ```
-4. Submit a pull request.
+We welcome contributions to improve this project. If you have suggestions or enhancements, please fork the repository and submit a pull request. 
 
----
+1. **Fork the Repository**.
+2. **Create a New Branch**:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. **Make Your Changes**.
+4. **Commit Your Changes**:
+   ```bash
+   git commit -m "Add your message"
+   ```
+5. **Push to the Branch**:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+6. **Open a Pull Request**.
 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## Contact
 
+For any inquiries or issues, feel free to reach out:
 
-### <i>Thank you for your interest in the project!</i>
+- **Author**: Morsalin Islam Shapon
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+
+## Releases
+
+For the latest updates and releases, please visit the [Releases section](https://github.com/MorsalinIslamShapon/Diabetes-Prediction-SystemV3/releases). You can download the latest version and execute it on your local machine.
+
+If you encounter any issues, check the "Releases" section for troubleshooting tips and updates.
+
+![Health Data Visualization](https://img.shields.io/badge/Health%20Data%20Visualization-Interactive-blue)
+
+Thank you for your interest in the Diabetes Prediction System V3! We hope this tool helps you understand your health better.
